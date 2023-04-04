@@ -10,8 +10,8 @@ import IndexLead from './pages/leads/IndexLead'
 import ShowLead from './pages/leads/ShowLead'
 import IndexContact from './pages/contacts/IndexContact'
 import ShowContact from './pages/contacts/ShowContact'
-import Projects from './pages/projects/Projects'
-import Project from './pages/projects/Project'
+import IndexProject from './pages/projects/IndexProject'
+import ShowProject from './pages/projects/ShowProject'
 
 function App() {
 
@@ -52,8 +52,8 @@ function App() {
             <Route path="/leads/:id" element={<ShowLead />} />
             <Route path="/contacts" element={<IndexContact />} />
             <Route path="/contacts/:id" element={<ShowContact />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<Project />} />
+            <Route path="/projects" element={<IndexProject />} />
+            <Route path="/projects/:id" element={<ShowProject />} />
             {!isLoading && <Route path="*" element={<Navigate to="/login" />} />}
           </>
           :

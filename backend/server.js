@@ -16,8 +16,9 @@ const connectDB = require('./config/db')
 // Connect to database
 connectDB()
 
+const contactRoutes = require('./routes/contactRoutes')
 const leadRoutes = require('./routes/leadRoutes')
-// const commentRoutes = require('./routes/commentRoutes')
+const projectRoutes = require('./routes/projectRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 
@@ -28,9 +29,10 @@ app.use(cors())
 
 app.use('/auth', authRoutes)
 app.use('/users', authorize, userRoutes)
+app.use('/contacts', contactRoutes)
 app.use('/leads', leadRoutes)
-// "/p/" stands for post and all comment routes need a reference to their post
-// app.use('/comments/p/', commentRoutes)
+// "/c/" stands for contact and all contact routes need a reference to their contact
+app.use('/projects/c/', projectRoutes)
 
 // Listen to the given port
 app.listen(PORT, () => {
