@@ -26,11 +26,11 @@ const { authorize } = require('./middleware/authMiddleware')
 app.use(express.json())
 app.use(cors())
 
+app.use('/auth', authRoutes)
+app.use('/users', authorize, userRoutes)
 app.use('/leads', leadRoutes)
 // "/p/" stands for post and all comment routes need a reference to their post
 // app.use('/comments/p/', commentRoutes)
-app.use('/users', authorize, userRoutes)
-app.use('/auth', authRoutes)
 
 // Listen to the given port
 app.listen(PORT, () => {

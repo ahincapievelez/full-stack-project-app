@@ -7,7 +7,7 @@ async function register(req, res) {
 
     try {
         // 1. Check if user already exists
-        const foundUser = await User.findOne({ username: req.body.username })
+        const foundUser = await User.findOne({ email: req.body.email })
 
         if (foundUser) {
             return res.status(400).json({ error: 'User already exists' })
@@ -25,7 +25,7 @@ async function register(req, res) {
 
         // 4. Generate a JWT token and return it to user
 
-        const payload = { id: newUser._id, user: newUser.username }
+        const payload = { id: newUser._id, user: newUser.email }
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 300 })
 
         res.status(200).json({ token }) 
@@ -40,7 +40,7 @@ async function login(req, res) {
     try {
         // 1. Check if user exists
 
-        const foundUser = await User.findOne({ username: req.body.username })
+        const foundUser = await User.findOne({ email: req.body.email })
 
         if (!foundUser) {
             return res.status(404).json({ error: 'No such user exists' })
@@ -56,7 +56,7 @@ async function login(req, res) {
 
         // 3. Generate a JWT token and return it to user
 
-        const payload = { id: foundUser._id, user: foundUser.username }
+        const payload = { id: foundUser._id, user: foundUser.email }
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 300 })
 
         res.status(200).json({ token }) 

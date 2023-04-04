@@ -2,7 +2,7 @@ function Footer() {
     return (
     <div className='row fixed-bottom'>
         <div className='col footer'>
-            <h6>2023 Copyrights © <span>Roads Consulting Group</span></h6>
+            <h6>2023 Copyrights © <span>BOS Post</span></h6>
         </div>
     </div>
     );

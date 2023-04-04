@@ -1,13 +1,4 @@
 const Leads = require('../models/leadModel')
-// const Comments = require('../models/commentModel')
-
-// const posts = require('../models/posts')
-
-// module.exports.seed = async (req, res) => {
-//     // await Posts.deleteMany({})
-//     // await Posts.create(posts)
-//     res.redirect('/posts')
-// }
 
 module.exports.index = async (req, res) => {
     try {

@@ -1,32 +1,68 @@
 import './App.css';
 import { Navigate, Route, Routes } from "react-router-dom";
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'
-import Leads from './pages/Leads'
-import Lead from './pages/Lead'
-import Contacts from './pages/Contacts'
-import Contact from './pages/Contact'
-import Projects from './pages/Projects'
-import Project from './pages/Project'
-import Bids from './pages/Bids'
-import Bid from './pages/Bid'
+import { useEffect, useState } from 'react'
+import { userInfo } from './services/userService';
+
+import Login from './pages/users/Login';
+import Register from './pages/users/Register';
+import Dashboard from './pages/dashboard/Dashboard'
+import IndexLead from './pages/leads/IndexLead'
+import ShowLead from './pages/leads/ShowLead'
+import IndexContact from './pages/contacts/IndexContact'
+import ShowContact from './pages/contacts/ShowContact'
+import Projects from './pages/projects/Projects'
+import Project from './pages/projects/Project'
 
 function App() {
+
+  const [user, setUser] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+
+    let token = localStorage.getItem('token')
+
+    if (token) {
+      getLoggedInUser()
+    } else {
+      setIsLoading(false)
+    }
+
+    async function getLoggedInUser(){
+      const user = await userInfo()
+      console.log('LoggedIn User: ' + user.username)
+      setUser(user)
+      setIsLoading(false)
+    }
+  }, [])
+
+  let userLoggedIn = user.username
+  console.log(userLoggedIn)
+
   return (
     <div className="App">
 
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/leads" element={<Leads />} />
-        <Route path="/leads/:id" element={<Lead />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/contacts/:id" element={<Contact />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<Project />} />
-        <Route path="/bids" element={<Bids />} />
-        <Route path="/bids/:id" element={<Bid />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/register" element={<Register setUser={setUser}/>} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        {userLoggedIn ?
+          <>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/leads" element={<IndexLead />} />
+            <Route path="/leads/:id" element={<ShowLead />} />
+            <Route path="/contacts" element={<IndexContact />} />
+            <Route path="/contacts/:id" element={<ShowContact />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<Project />} />
+            {!isLoading && <Route path="*" element={<Navigate to="/login" />} />}
+          </>
+          :
+          <>
+            <Route path="/register" element={<Register setUser={setUser}/>} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
+            {!isLoading && <Route path="*" element={<Navigate to="/login" />} />}
+          </>
+        }
       </Routes>
 
     </div>

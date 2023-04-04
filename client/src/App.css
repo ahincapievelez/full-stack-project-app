@@ -16,6 +16,13 @@
   overflow: hidden;
 }
 
+.pic-register {
+  position: fixed;
+  right: -110px;
+  top: 515px;
+  overflow: hidden;
+}
+
 .right-side {
   height: 100vh;
   padding: 100px;
@@ -30,6 +37,11 @@
 
 .logo {
   margin-bottom: 20px;
+  width: 350px;
+}
+
+.logo-roads {
+  width: 150px;
 }
 
 form {
@@ -76,6 +88,11 @@ form > h6 {
 .copyright {
   position: relative;
   top: 100px;
+}
+
+.copyright-register {
+  position: relative;
+  top: 40px;
 }
 
 .header {
@@ -167,20 +184,20 @@ form > h6 {
   color: #C24A25;
 }
 
-.svg-icon:hover{
+/* .aside .nav-icon:hover{
   fill: #C24A25;
-}
+} */
 
-.aside .active {
+.aside a.active {
   background-color: #F8EBE8;
   border-left: 4px solid #C24A25;
   color: #C24A25;
   font-weight: 400;
 }
 
-.aside .active .nav-icon{
+/* .aside .active .nav-icon{
   fill: #C24A25;
-}
+} */
 
 .aside-icon {
   margin-right: 10px;
@@ -201,7 +218,7 @@ form > h6 {
 
 .top-label {
   background-color: #F8EBE8;
-  margin-top: 107px;
+  margin-top: 89px;
   height: 50px;
   display: flex;
   align-items: center;
