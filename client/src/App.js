@@ -54,7 +54,7 @@ function App() {
             <Route path="/contacts/:id" element={<ShowContact />} />
             <Route path="/projects" element={<IndexProject />} />
             <Route path="/projects/:id" element={<ShowProject />} />
-            {!isLoading && <Route path="*" element={<Navigate to="/login" />} />}
+            {!isLoading && <Route path="*" element={<Navigate to="/dashboard" />} />}
           </>
           :
           <>

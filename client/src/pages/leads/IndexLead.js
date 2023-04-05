@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react"
+import { getAllLeads } from "../../services/leadService"
 import Header from '../../components/Header'
 import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
 // import Filter from '../components/Filter'
 
 function IndexLead() {
+
+    let [leads, setLeads] = useState([])
+
+    useEffect(() => {
+
+        async function loadData(){
+            const data = await getAllLeads()
+            setLeads(data)
+        }
+        loadData()
+
+    }, [])
+
+    console.log('Leads: ', leads)
     return (
 <div className="container-fluid dashboard">
         <Header />
@@ -27,38 +43,30 @@ function IndexLead() {
                     <div className='row'>
                         <div className='col leads-blk'>
                             <table className='leads-table'>
-                                <tr>
-                                    <th className='chkbox'><input type="checkbox" id="" name="" /></th>
-                                    <th>Company</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                                <tr>
-                                    <td className="chkbox"><input type="checkbox" id="" name="" /></td>
-                                    <td>MSA Mortgage</td>
-                                    <td>Luisa</td>
-                                    <td>Bedoya</td>
-                                    <td>lbedoya@msamortgage.com</td>
-                                    <td>6179090686</td>
-                                </tr>
-                                <tr>
-                                    <td className="chkbox"><input type="checkbox" id="" name="" /></td>
-                                    <td>Eastern Bank</td>
-                                    <td>Adriana</td>
-                                    <td>Moschella</td>
-                                    <td>a.moschella@easternbank.com</td>
-                                    <td>78173893001</td>
-                                </tr>
-                                <tr>
-                                    <td className="chkbox"><input type="checkbox" id="" name="" /></td>
-                                    <td>Elenas Bakeshop</td>
-                                    <td>Sebastian</td>
-                                    <td>Londono</td>
-                                    <td>info@elenasbakeshop.com</td>
-                                    <td>7818667888</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th className='chkbox'><input type="checkbox" id="" name="" /></th>
+                                        <th>Company</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {leads?.map((lead, index) =>
+                                        <tr key={index}>
+                                            <td className="chkbox"><input type="checkbox" id="" name="" /></td>
+                                            <td>{lead.company}</td>
+                                            <td>{lead.firstName}</td>
+                                            <td>{lead.lastName}</td>
+                                            <td>{lead.email}</td>
+                                            <td>{lead.phoneNumber}</td>
+                                            <td style={{fontWeight: '200', fontStyle: 'oblique'}}><a href={`/leads/${lead._id}`} style={{color: '#1A5F7A'}}>See details</a></td>
+                                        </tr>
+                                    )}
+                                </tbody>
                             </table>
                         </div>
                     </div>

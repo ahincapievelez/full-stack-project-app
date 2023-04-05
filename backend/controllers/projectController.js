@@ -6,7 +6,7 @@ module.exports.createProject = async (req, res) => {
         // create a document in our project collection
         const project = await Projects.create(req.body)
         // find the post 
-        await Contacts.findByIdAndUpdate(req.params.pid, {
+        await Contacts.findByIdAndUpdate(req.params.cid, {
             // and push the new project document's id
             $push: {
                 // to the contact's projects field/property
@@ -24,7 +24,7 @@ module.exports.deleteProject = async (req, res) => {
         // first use the id to delete the project from the projects collection
         await Projects.findByIdAndDelete(req.params.id)
         // then use the post's id to find the post
-        await Contacts.findByIdAndUpdate(req.params.pid, {
+        await Contacts.findByIdAndUpdate(req.params.cid, {
             // and pull/remove the reference id (to the comment) from
             $pull: {
                 // the comments array
@@ -40,7 +40,7 @@ module.exports.deleteProject = async (req, res) => {
 module.exports.indexProject = async (req, res) => {
     try {
         // target the projects property 
-        const contact = await Contacts.findById(req.params.pid).populate('projects')
+        const contact = await Contacts.findById(req.params.cid).populate('projects')
         res.json(contact.projects)
     } catch(err) {
         res.status(400).json({ error: err.message })

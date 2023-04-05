@@ -2,9 +2,7 @@ function Header() {
     return (
     <div className="row header fixed-top">
         <div className="col-2 h-left d-flex align-items-center justify-content-start">
-            <a href="roads">
-                <img className="logo-roads" src="whitelogo.png" alt="Bostonian Post"/>
-            </a>
+            <img className="logo-roads" src="/whitelogo.png" alt="Bostonian Post"/>
         </div>
         <div className="col-10 h-right d-flex align-items-center">
             <div className="container-fluid">
