@@ -40,7 +40,7 @@ export async function createContact(contact) {
     }
 }
 
-export async function updateLead(id, contact) {
+export async function updateContact(id, contact) {
     const axios = customAxiosWithAuth()
     try {
         await axios.put(`/contacts/${id}`, contact)

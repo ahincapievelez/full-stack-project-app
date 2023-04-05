@@ -8,7 +8,7 @@ import Footer from '../../components/Footer'
 
 function ShowContact() {
 
-    let [contact, setContact] = useState([])
+    let [contact, setContact] = useState({})
 
     const navigate = useNavigate()
     const params = useParams()
@@ -25,6 +25,11 @@ function ShowContact() {
 
     console.log('Contact: ', contact)
 
+    async function handleDeleteContact() {
+        await deleteContact(contact._id)
+        navigate('/contacts')
+    }
+
     return (
 <div className="container-fluid dashboard">
         <Header />
@@ -38,11 +43,11 @@ function ShowContact() {
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='col'>
-                            <div className='new-lead'>
-                                Edit Contact
-                                <a href="a"><img className='add-lead' src='/plus.svg' alt='' /></a>
-                            </div>
+                        <div className='col contact-btns-box'>
+                            <button className='delete-btn' onClick={handleDeleteContact}>Delete Contact</button>
+                            <Link to={`/contacts/${contact._id}/edit`}>
+                                <button className='edit-btn'>Edit Contact</button>
+                            </Link>
                         </div>
                     </div>
                     <div className='row'>
@@ -61,30 +66,36 @@ function ShowContact() {
                         <div className='col contact-blk'>
                             <h6>Projects</h6>
                             <table className='contact-table'>
-                                <tr>
-                                    <th className='chkbox'><input type="checkbox" id="" name="" /></th>
-                                    <th>Project Name</th>
-                                    <th>Status</th>
-                                    <th>Tasks</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                </tr>
-                                <tr>
-                                    <td className="chkbox"><input type="checkbox" id="" name="" /></td>
-                                    <td>Elenas Bakeshop</td>
-                                    <td>
-                                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar bg-success" style={{width: "50%"}}>In Progress</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar bg-warning" style={{width: "25%"}}>25%</div>
-                                        </div>
-                                    </td>
-                                    <td>04/01/2023</td>
-                                    <td>04/06/2023</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th className='chkbox'><input type="checkbox" id="" name="" /></th>
+                                        <th>Project Name</th>
+                                        <th>Status</th>
+                                        <th>Tasks</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {contact.projects?.map((project, index) =>
+                                        <tr key={index}>
+                                            <td className="chkbox"><input type="checkbox" id="" name="" /></td>
+                                            <td>{project.projectName}</td>
+                                            <td>
+                                                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-success" style={{width: "25%"}}>{project.status}</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-warning" style={{width: "100%"}}>{`${project.tasks}`}</div>
+                                                </div>
+                                            </td>
+                                            <td>{new Date(project.startDate).toLocaleDateString()}</td>
+                                            <td>{project.endDate? new Date(project.endDate).toLocaleDateString() : ""}</td>
+                                        </tr>
+                                    )}
+                                </tbody>
                             </table>
                         </div>
                     </div>

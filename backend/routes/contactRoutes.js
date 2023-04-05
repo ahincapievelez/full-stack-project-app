@@ -10,10 +10,10 @@ const { authorize, confirmUserAccess } = require('../middleware/authMiddleware')
 router.get('/', contactController.index)
 
 // delete
-router.delete('/:id', authorize, confirmUserAccess, contactController.delete)
+router.delete('/:id', authorize, contactController.delete)
 
 // update
-router.put('/:id', authorize, confirmUserAccess, contactController.update)
+router.put('/:id', authorize, contactController.update)
 
 // create
 router.post('/', authorize, contactController.create)

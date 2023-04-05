@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Header from '../../components/Header'
 import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
@@ -17,11 +18,10 @@ function IndexProject() {
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='col'>
-                            <div className='new-lead'>
-                                Add New Project
-                                <a href="a"><img className='add-lead' src='/plus.svg' alt='' /></a>
-                            </div>
+                        <div className='col index-btns-box'>
+                            <Link to='/projects/new'>
+                                    <button className='edit-btn'>Add New project</button>
+                            </Link>
                         </div>
                     </div>
                     <div className='row'>

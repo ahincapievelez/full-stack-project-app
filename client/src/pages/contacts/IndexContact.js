@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getAllContacts } from "../../services/contactService"
 import Header from '../../components/Header'
 import Aside from '../../components/Aside'
@@ -34,13 +35,12 @@ function IndexContact() {
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='col'>
-                            <div className='new-lead'>
-                                Add New Contact
-                                <a href="a"><img className='add-lead' src='/plus.svg' alt='' /></a>
+                        <div className='col index-btns-box'>
+                                <Link to='/contacts/new'>
+                                    <button className='edit-btn'>Add New Contact</button>
+                                </Link>
                             </div>
                         </div>
-                    </div>
                     <div className='row'>
                         <div className='col leads-blk'>
                             <table className='leads-table'>
@@ -52,19 +52,19 @@ function IndexContact() {
                                         <th>Last Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Details</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {contacts?.map((contact, index) =>
                                         <tr key={index}>
-                                            <td className="chkbox"><input type="checkbox" id="" name="" /></td>
-                                            <td>{contact.company}</td>
-                                            <td>{contact.firstName}</td>
-                                            <td>{contact.lastName}</td>
-                                            <td>{contact.email}</td>
-                                            <td>{contact.phoneNumber}</td>
-                                            <td style={{fontWeight: '200', fontStyle: 'oblique'}}><a href={`/contacts/${contact._id}`} style={{color: '#1A5F7A', textDecoration: 'none'}}>View Contact</a></td>
+                                                <td className="chkbox"><input type="checkbox" id="" name="" /></td>
+                                                <td>{contact.company}</td>
+                                                <td>{contact.firstName}</td>
+                                                <td>{contact.lastName}</td>
+                                                <td>{contact.email}</td>
+                                                <td>{contact.phoneNumber}</td>
+                                                <td style={{fontWeight: '300'}}><a href={`/contacts/${contact._id}`} style={{padding: '7px 12px', borderRadius: '5px', backgroundColor: '#F8EBE8', color: '#C24A25', textDecoration: 'none'}}>View Contact</a></td>
                                         </tr>
                                     )}
                                 </tbody>

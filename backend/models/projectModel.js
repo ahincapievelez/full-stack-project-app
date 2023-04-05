@@ -13,19 +13,7 @@ const projectSchema = new Schema({
         enum: ['To Do', 'In Progress', 'On Hold', 'Completed', 'Delayed', 'Cancelled'],
         default: 'To Do'
     },
-    tasks: [{
-        taskName: { type: String },
-        taskStatus: { 
-            type: String,
-            enum: ['To Do', 'In Progress', 'On Hold', 'Completed', 'Delayed', 'Cancelled'],
-            default: 'To Do'
-        },
-        taskStartDate: {
-            type: Date,
-            default: currentDate
-        },
-        taskEndDate: { type: Date }
-    }],
+    tasks: { type: String },
     startDate: {
         type: Date,
         default: currentDate 
@@ -36,3 +24,24 @@ const projectSchema = new Schema({
 const Project = mongoose.model('Project', projectSchema)
 
 module.exports = Project
+
+
+
+
+
+
+
+
+// tasks: [{
+//     taskName: { type: String },
+//     taskStatus: { 
+//         type: String,
+//         enum: ['To Do', 'In Progress', 'On Hold', 'Completed', 'Delayed', 'Cancelled'],
+//         default: 'To Do'
+//     },
+//     taskStartDate: {
+//         type: Date,
+//         default: currentDate
+//     },
+//     taskEndDate: { type: Date }
+// }],
