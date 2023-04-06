@@ -39,7 +39,7 @@ Projects: Here you will find the list of all the projects done to all your custo
 
 - GitHub repo [https://github.com/ahincapievelez/full-stack-project-app](https://github.com/ahincapievelez/full-stack-project-app)
 - Project Planing
-- Deployed app
+- Deployed app [https://bospost-frontend.onrender.com](https://bospost-frontend.onrender.com)
 
 
 
