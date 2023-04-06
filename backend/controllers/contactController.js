@@ -13,7 +13,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.delete = async (req, res) => {
     try {
-        // first find the post, store it in a variable, then delete it from database
+        // first find the contact, store it in a variable, then delete it from database
         const contact = await Contacts.findByIdAndDelete(req.params.id)
         // delete all comments where the comment id 
         await Projects.deleteMany({ _id: { 

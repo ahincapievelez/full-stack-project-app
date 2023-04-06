@@ -13,7 +13,11 @@ const projectSchema = new Schema({
         enum: ['To Do', 'In Progress', 'On Hold', 'Completed', 'Delayed', 'Cancelled'],
         default: 'To Do'
     },
-    tasks: { type: String },
+    contacts: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Contact'
+    }],
+    tasks: { type: Number },
     startDate: {
         type: Date,
         default: currentDate 

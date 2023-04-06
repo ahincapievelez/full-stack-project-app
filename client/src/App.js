@@ -13,6 +13,7 @@ import ShowContact from './pages/contacts/ShowContact'
 import NewContact from './pages/contacts/NewContact'
 import EditContact from './pages/contacts/EditContact'
 import IndexProject from './pages/projects/IndexProject'
+import NewProject from './pages/projects/NewProject'
 import ShowProject from './pages/projects/ShowProject'
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
             <Route path="/contacts/new" element={<NewContact />} />
             <Route path="/contacts/:id/edit" element={<EditContact />} />
             <Route path="/projects" element={<IndexProject />} />
+            <Route path="/projects/c/:cid/new" element={<NewProject />} />
             <Route path="/projects/:id" element={<ShowProject />} />
             {!isLoading && <Route path="*" element={<Navigate to="/dashboard" />} />}
           </>

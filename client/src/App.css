@@ -420,6 +420,22 @@ span {
   color: #C24A25;
 }
 
+.project-btns-box {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-btns-box > h6 {
+  color: #C24A25;
+}
+
+.details-pgrahp {
+  color: #6A707E;
+}
+
 .details-box {
   padding: 20px;
 }

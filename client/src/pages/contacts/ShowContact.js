@@ -23,7 +23,7 @@ function ShowContact() {
 
     }, [params.id])
 
-    console.log('Contact: ', contact)
+    // console.log('Contact: ', contact)
 
     async function handleDeleteContact() {
         await deleteContact(contact._id)
@@ -54,17 +54,22 @@ function ShowContact() {
                         <div className='col contact-blk'>
                             <h6>Contact Info</h6>
                             <div className="details-box">
-                                <p><span>Company: </span>{contact.company}</p>
-                                <p><span>First Name: </span> {contact.firstName}</p>
-                                <p><span>Last Name: </span> {contact.lastName}</p>
-                                <p><span>Email: </span> {contact.email}</p>
-                                <p><span>Phone Number: </span> {contact.phoneNumber}</p>
+                                <p className="details-pgrahp"><span>Company: </span>{contact.company}</p>
+                                <p className="details-pgrahp"><span>First Name: </span> {contact.firstName}</p>
+                                <p className="details-pgrahp"><span>Last Name: </span> {contact.lastName}</p>
+                                <p className="details-pgrahp"><span>Email: </span> {contact.email}</p>
+                                <p className="details-pgrahp"><span>Phone Number: </span> {contact.phoneNumber}</p>
                             </div>
                         </div>
                     </div>
                     <div className='row'>
                         <div className='col contact-blk'>
-                            <h6>Projects</h6>
+                            <div className='col project-btns-box'>
+                                <h6>Projects</h6>
+                                <Link to={`/projects/c/${contact._id}/new`}>
+                                    <button className='edit-btn'>Add New Project</button>
+                                </Link>
+                            </div>
                             <table className='contact-table'>
                                 <thead>
                                     <tr>
