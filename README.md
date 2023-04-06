@@ -26,7 +26,6 @@ Contact/Clients: You can create, edit and delete clients. You can also create pr
 
 Projects: Here you will find the list of all the projects done to all your customers. 
 
-Translated with www.DeepL.com/Translator (free version)
 
 ### Technologies
 
