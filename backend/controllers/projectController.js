@@ -37,10 +37,19 @@ module.exports.deleteProject = async (req, res) => {
     }
 }
 
+module.exports.indexAllProjects = async (req, res) => {
+    try {
+        const projects = await Projects.find().populate('contacts')
+        res.status(200).json(projects)
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}
+
 module.exports.indexProject = async (req, res) => {
     try {
         // target the projects property 
-        const contact = await Contacts.findById(req.params.cid).populate('projects')
+        const contact = await Contacts.findById(req.params.cid).populate({path: 'projects', options: {sort: {endDate: 1}}})
         res.json(contact.projects)
     } catch(err) {
         res.status(400).json({ error: err.message })

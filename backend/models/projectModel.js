@@ -17,12 +17,12 @@ const projectSchema = new Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Contact'
     }],
-    tasks: { type: Number },
     startDate: {
         type: Date,
         default: currentDate 
     },
-    endDate: { type: String }
+    endDate: { type: Date, default: currentDate },
+    tasks: { type: Number }
 }, { timestamps: true })
 
 const Project = mongoose.model('Project', projectSchema)

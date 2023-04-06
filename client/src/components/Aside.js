@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 function Aside() {
 
     // let [activeTag, setActiveTag] = useState()
+    const logout = () => {
+        localStorage.removeItem("token")
+      };
 
     const handleChange = (evt) => {
         if(evt.target.className === ''){
@@ -45,6 +48,9 @@ function Aside() {
                         </svg>
                     </div>
                     Projects
+                </Link>
+                <Link to="/login" onClick={logout}>
+                    logout
                 </Link>
             </div>
     );

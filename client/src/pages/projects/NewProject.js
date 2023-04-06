@@ -24,7 +24,8 @@ function NewProject() {
             status: statusRef.current.value,
             tasks: tasksRef.current.value,
             startDate: startDateRef.current.value,
-            endDate: endDateRef.current.value
+            endDate: endDateRef.current.value,
+            contacts: params.cid
         }
         await createProjectForContact(project, params.cid)
         navigate(`/contacts/${params.cid}`)

@@ -1,4 +1,15 @@
-import { customAxiosWithAuth } from './api'
+import { customAxios, customAxiosWithAuth } from './api'
+
+export async function getAllProjects() {
+    const axios = customAxios()
+    try {
+        const response = await axios.get('/projects/c/')
+        return response.data
+    } catch(err) {
+        console.log(err.message)
+        return []
+    }
+}
 
 export async function deleteProjectFromContact(projectId, contactId) {
     const axios = customAxiosWithAuth()

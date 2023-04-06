@@ -40,7 +40,9 @@ function App() {
   }, [])
 
   let userLoggedIn = user.username
+  let userId = user.id
   console.log(userLoggedIn)
+  console.log(userId)
 
   return (
     <div className="App">
