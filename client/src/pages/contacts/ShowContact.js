@@ -4,6 +4,7 @@ import { getContact, deleteContact } from "../../services/contactService"
 import Header from '../../components/Header'
 import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
+import { deleteProjectFromContact } from "../../services/projectService"
 // import Filter from '../components/Filter'
 
 function ShowContact() {
@@ -28,6 +29,14 @@ function ShowContact() {
     async function handleDeleteContact() {
         await deleteContact(contact._id)
         navigate('/contacts')
+    }
+
+    async function handleDeleteProject(project) {
+        await deleteProjectFromContact(project._id, contact._id)
+        let updateContact = { ...contact }
+        updateContact.projects = updateContact.projects.filter(p => p._id !== project._id)
+        setContact(updateContact)
+        navigate(`/contacts/${contact._id}`)
     }
 
     return (
@@ -79,6 +88,7 @@ function ShowContact() {
                                         <th>Tasks</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -98,6 +108,11 @@ function ShowContact() {
                                             </td>
                                             <td>{new Date(project.startDate).toLocaleDateString()}</td>
                                             <td>{project.endDate? new Date(project.endDate).toLocaleDateString() : ""}</td>
+                                            <td style={{textAlign: 'center'}}>
+                                                <div className='col'>
+                                                    <button className='delete-project-btn' onClick={() => handleDeleteProject(project)}>X</button>
+                                                </div>
+                                            </td>
                                         </tr>
                                     )}
                                 </tbody>

@@ -22,7 +22,7 @@ function NewProject() {
         let project = {
             projectName: projectNameRef.current.value,
             status: statusRef.current.value,
-            task: tasksRef.current.value,
+            tasks: tasksRef.current.value,
             startDate: startDateRef.current.value,
             endDate: endDateRef.current.value
         }
@@ -68,7 +68,7 @@ function NewProject() {
                                 <div class="row mb-3">
                                     <label htmlFor="tsk" class="col-sm-2 col-form-label">Tasks:</label>
                                     <div class="col-sm-4">
-                                    <input class="form-control" type="number" id="tsk" ref={tasksRef}/>
+                                    <input class="form-control" type="number" id="tsk" name="tsk" ref={tasksRef}/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -78,7 +78,7 @@ function NewProject() {
                                     </div>
                                 </div>
                                 <div class="row mb-5">
-                                    <label htmlFor="enddt" class="col-sm-2 col-form-label">Phone number:</label>
+                                    <label htmlFor="enddt" class="col-sm-2 col-form-label">End Date:</label>
                                     <div class="col-sm-4">
                                     <input class="form-control" type="datetime-local" id="enddt" ref={endDateRef}/>
                                     </div>
