@@ -40,7 +40,7 @@ export async function getProjectFromContact(projectId, contactId) {
     }
 }
 
-export async function updateCommentOfIdFromPost(project, projectId, contactId) {
+export async function updateProjectOfIdFromContact(project, projectId, contactId) {
     const axios = customAxiosWithAuth()
     try {
         await axios.put(`/projects/c/${contactId}/p/${projectId}`, project)

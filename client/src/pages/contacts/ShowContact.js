@@ -109,8 +109,11 @@ function ShowContact() {
                                             <td>{new Date(project.startDate).toLocaleDateString()}</td>
                                             <td>{project.endDate? new Date(project.endDate).toLocaleDateString() : ""}</td>
                                             <td style={{textAlign: 'center'}}>
-                                                <div className='col'>
+                                                <div className='btn-group'>
                                                     <button className='delete-project-btn' onClick={() => handleDeleteProject(project)}>X</button>
+                                                    <Link to={`/projects/c/${contact._id}/p/${project._id}/edit`}>
+                                                        <button className='delete-project-btn'>Edit</button>
+                                                    </Link>
                                                 </div>
                                             </td>
                                         </tr>

@@ -15,6 +15,7 @@ import EditContact from './pages/contacts/EditContact'
 import IndexProject from './pages/projects/IndexProject'
 import NewProject from './pages/projects/NewProject'
 import ShowProject from './pages/projects/ShowProject'
+import EditProject from './pages/projects/EditProject'
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
             <Route path="/projects" element={<IndexProject />} />
             <Route path="/projects/c/:cid/new" element={<NewProject />} />
             <Route path="/projects/:id" element={<ShowProject />} />
+            <Route path="/projects/c/:cid/p/:id/edit" element={<EditProject />} />
             {!isLoading && <Route path="*" element={<Navigate to="/dashboard" />} />}
           </>
           :

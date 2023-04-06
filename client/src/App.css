@@ -502,7 +502,7 @@ span {
   background-color: #C24A25;
   /* padding: 10px 10px; */
   color: white;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* .delete-btn:hover {
@@ -517,8 +517,8 @@ span {
   border: 1px solid #FFA611;
   background-color: #FFA611;
   padding: 10px 20px;
-  color: black;
-  font-weight: 400;
+  color: white;
+  font-weight: 500;
 }
 
 .create-btn {
@@ -527,4 +527,9 @@ span {
   padding: 10px 40px;
   color: white;
   font-weight: 400;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-evenly;
 }
